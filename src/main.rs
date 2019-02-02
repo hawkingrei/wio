@@ -1,5 +1,6 @@
 use indicatif::ProgressBar;
 use indicatif::ProgressStyle;
+
 fn main() {
     let bar = ProgressBar::new(1000);
     bar.set_style(ProgressStyle::default_bar()
