@@ -1,12 +1,16 @@
-use rand::Rng;
+use rand::distributions::*;
+use rand::rngs::SmallRng;
+use rand::{FromEntropy, Rng};
 
 #[inline]
-fn fill_random_buf(len: usize) -> Vec<u8> {
-    let mut rng = rand::thread_rng();
-    let numbers: Vec<u8> = (0..len)
+pub fn fill_random_buf(len: usize) -> Vec<i64> {
+    let mut rng = SmallRng::from_entropy();
+    let distr = Uniform::new(3i64, 123_456_789_123);
+    let numbers: Vec<i64> = (0..len)
         .map(|_| {
             // 1 (inclusive) to 21 (exclusive)
-            rng.gen_range(1, 21)
+            let result: i64 = distr.sample(&mut rng);
+            result
         })
         .collect();
     numbers
