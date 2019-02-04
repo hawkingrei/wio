@@ -1,18 +1,17 @@
 mod rand;
+mod stats;
 mod timer;
 
+use std::cmp;
 use std::mem::size_of;
 use std::time::Duration;
+use std::time::Instant;
 
 use indicatif::ProgressBar;
 use indicatif::ProgressStyle;
 
 use crate::rand::fill_random_buf;
-
-fn throughput(dur: Duration, bytes: usize) -> u64 {
-    let ns_iter = dur.as_secs() * 1_000_000_000 + (dur.subsec_nanos() as u64);
-    bytes as u64 * 1000 / ns_iter
-}
+use crate::stats::Stats;
 
 fn main() {
     let bar = ProgressBar::new(1000);
@@ -26,9 +25,13 @@ fn main() {
         // ...
     }
     bar.finish();
-    let dur = timer::bench(10, || {
+
+    let sum = timer::bench(&mut || {
         fill_random_buf(2000000);
-        1000
+        0
     });
-    print!("{} MB/s", throughput(dur, size_of::<i64>() * 2000000));
+
+    let ns_iter = cmp::max(sum.median as u64, 1);
+    let mb_s = size_of::<i64>() * 2000000 * 1000 / ns_iter as usize;
+    print!("{} MB/s", mb_s);
 }
