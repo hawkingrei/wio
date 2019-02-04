@@ -9,8 +9,7 @@ pub fn fill_random_buf(len: usize) -> Vec<i64> {
     let numbers: Vec<i64> = (0..len)
         .map(|_| {
             // 1 (inclusive) to 21 (exclusive)
-            let result: i64 = distr.sample(&mut rng);
-            result
+            distr.sample(&mut rng)
         })
         .collect();
     numbers
