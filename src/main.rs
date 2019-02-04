@@ -26,9 +26,9 @@ fn main() {
         // ...
     }
     bar.finish();
-    let dur = timer::bench(1000, || {
-        fill_random_buf(1000);
+    let dur = timer::bench(10, || {
+        fill_random_buf(2000000);
         1000
     });
-    print!("{:6} MB/s", throughput(dur, size_of::<i64>() * 1000 * 1000));
+    print!("{} MB/s", throughput(dur, size_of::<i64>() * 2000000));
 }
