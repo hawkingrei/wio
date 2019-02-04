@@ -1,3 +1,5 @@
+#![feature(asm)]
+
 mod rand;
 mod stats;
 mod timer;
@@ -13,6 +15,21 @@ use indicatif::ProgressStyle;
 use crate::rand::fill_random_buf;
 use crate::stats::Stats;
 
+// Benchmarking
+
+/// A function that is opaque to the optimizer, to allow benchmarks to
+/// pretend to use outputs to assist in avoiding dead-code
+/// elimination.
+///
+/// This function is a no-op, and does not even read from `dummy`.
+#[cfg(not(any(target_arch = "asmjs", target_arch = "wasm32")))]
+pub fn black_box<T>(dummy: T) -> T {
+    // we need to "use" the argument in some way LLVM can't
+    // introspect.
+    unsafe { asm!("" : : "r"(&dummy)) }
+    dummy
+}
+
 fn main() {
     let bar = ProgressBar::new(1000);
     bar.set_style(
@@ -27,8 +44,7 @@ fn main() {
     bar.finish();
 
     let sum = timer::bench(&mut || {
-        fill_random_buf(2000000);
-        0
+        black_box(fill_random_buf(2000000));
     });
 
     let ns_iter = cmp::max(sum.median as u64, 1);
