@@ -141,6 +141,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "packed_simd"
+version = "0.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "cfg-if 0.1.6 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "parking_lot"
 version = "0.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -168,6 +176,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "autocfg 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.48 (registry+https://github.com/rust-lang/crates.io-index)",
+ "packed_simd 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "rand_chacha 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "rand_core 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rand_hc 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -364,6 +373,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "time"
+version = "0.1.42"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "libc 0.2.48 (registry+https://github.com/rust-lang/crates.io-index)",
+ "redox_syscall 0.1.51 (registry+https://github.com/rust-lang/crates.io-index)",
+ "winapi 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "ucd-util"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -415,6 +434,8 @@ name = "wio"
 version = "0.1.0"
 dependencies = [
  "indicatif 0.11.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rand 0.6.5 (registry+https://github.com/rust-lang/crates.io-index)",
+ "time 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [metadata]
@@ -436,6 +457,7 @@ dependencies = [
 "checksum num-traits 0.2.6 (registry+https://github.com/rust-lang/crates.io-index)" = "0b3a5d7cc97d6d30d8b9bc8fa19bf45349ffe46241e8816f50f62f6d6aaabee1"
 "checksum number_prefix 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)" = "dbf9993e59c894e3c08aa1c2712914e9e6bf1fcbfc6bef283e2183df345a4fee"
 "checksum owning_ref 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "49a4b8ea2179e6a2e27411d3bca09ca6dd630821cf6894c6c7c8467a8ee7ef13"
+"checksum packed_simd 0.3.2 (registry+https://github.com/rust-lang/crates.io-index)" = "66747c5757f0fbf8fdc764c8837e5b0cc1fdb1671fbf7fa88be02cc1fb5d47a8"
 "checksum parking_lot 0.7.1 (registry+https://github.com/rust-lang/crates.io-index)" = "ab41b4aed082705d1056416ae4468b6ea99d52599ecf3169b00088d43113e337"
 "checksum parking_lot_core 0.4.0 (registry+https://github.com/rust-lang/crates.io-index)" = "94c8c7923936b28d546dfd14d4472eaf34c99b14e1c973a32b3e6d4eb04298c9"
 "checksum rand 0.6.5 (registry+https://github.com/rust-lang/crates.io-index)" = "6d71dacdc3c88c1fde3885a3be3fbab9f35724e6ce99467f7d9c5026132184ca"
@@ -462,6 +484,7 @@ dependencies = [
 "checksum termion 1.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "689a3bdfaab439fd92bc87df5c4c78417d3cbe537487274e9b0b2dce76e92096"
 "checksum termios 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "72b620c5ea021d75a735c943269bb07d30c9b77d6ac6b236bc8b5c496ef05625"
 "checksum thread_local 0.3.6 (registry+https://github.com/rust-lang/crates.io-index)" = "c6b53e329000edc2b34dbe8545fd20e55a333362d0a321909685a19bd28c3f1b"
+"checksum time 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)" = "db8dcfca086c1143c9270ac42a2bbd8a7ee477b78ac8e45b19abfb0cbede4b6f"
 "checksum ucd-util 0.1.3 (registry+https://github.com/rust-lang/crates.io-index)" = "535c204ee4d8434478593480b8f86ab45ec9aae0e83c568ca81abf0fd0e88f86"
 "checksum unicode-width 0.1.5 (registry+https://github.com/rust-lang/crates.io-index)" = "882386231c45df4700b275c7ff55b6f3698780a650026380e72dabe76fa46526"
 "checksum unreachable 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "382810877fe448991dfc7f0dd6e3ae5d58088fd0ea5e35189655f84e6814fa56"
